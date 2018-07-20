@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity implements KeyboardHeightProvider.KeyboardHeightObserver {
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements KeyboardHeightPro
     LinearLayout content;
     LinearLayout inputBg;
     ImageView mSwitch;
+    TextView mInfo;
     private int keyboradH = -1;
     private KeyboardHeightProvider keyboardHeightProvider;
     private InputMethodManager imm;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements KeyboardHeightPro
         content = findViewById(R.id.content);
         inputBg = findViewById(R.id.inputbg);
         mSwitch = findViewById(R.id.iv_switch);
+        mInfo = findViewById(R.id.tv_info);
         imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         keyboardHeightProvider = new KeyboardHeightProvider(this);
         mSwitch.setOnClickListener(new View.OnClickListener() {
@@ -81,5 +84,6 @@ public class MainActivity extends AppCompatActivity implements KeyboardHeightPro
         } else {
             inputBg.setVisibility(View.GONE);
         }
+        mInfo.setText("keyboard height:"+height);
     }
 }
