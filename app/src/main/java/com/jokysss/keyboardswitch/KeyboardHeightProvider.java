@@ -62,6 +62,10 @@ public class KeyboardHeightProvider extends PopupWindow {
     private void handleOnGlobalLayout() {
         popupView.getWindowVisibleDisplayFrame(rect);
         int keyboardHeight = screenSize.y - rect.bottom;
+        if (keyboardHeight < 0) {
+            keyboardHeight = 0;
+            screenSize.y = rect.bottom;
+        }
         notifyKeyboardHeightChanged(keyboardHeight);
     }
 
